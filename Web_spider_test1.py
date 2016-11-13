@@ -15,7 +15,7 @@ class Baidu_Spider:
         # Calculate the pages this website contains
         endPage = self.page_counter(myPage)  
         # To get the final data which is names of professor  
-        self.save_data(self.myUrl,title,endPage)  
+        self.save_data(self.myUrl,endPage)  
   
     # Calculate the pages this website contains
     def page_counter(self,myPage):  
@@ -33,10 +33,10 @@ class Baidu_Spider:
   
   
     # To save the names of preofessor  
-    def save_data(self,url,title,endPage):  
+    def save_data(self,url,endPage):  
         # Add the name into list  
         self.get_data(url,endPage)  
-        f = open(title+'.txt','w+')  
+        f = open("list_of_professor"+'.txt','w+')  
         f.writelines(self.datas)  
         f.close()  
         print u'The program is finish'  
@@ -74,9 +74,6 @@ class Baidu_Spider:
         for item in myItems:  
             data = self.myTool.Replace_Char(item.replace("\n","").encode('gbk'))  
             self.datas.append(data+'\n')  
-  
-  
-      
       
 # The website "Rate my professor" with Rensselaer school.  
 bdurl = 'https://www.ratemyprofessors.com/search.jsp?query=rpi&queryoption=HEADER&stateselect=&country=&dept=&queryBy=&facetSearch=&schoolName=&offset=0&max=20'    
